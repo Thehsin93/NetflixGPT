@@ -20,7 +20,7 @@ const Body = ()=>{
         }
     ])
    
-    return <div>
+    return <div className="">
         
         <RouterProvider router = {Approuter}/>
     </div>

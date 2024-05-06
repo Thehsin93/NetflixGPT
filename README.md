@@ -19,3 +19,6 @@ Netflix GPT
     Search bar
     Movie Suggestions
 rafce - react arrow function component export 
+
+
+npm openi

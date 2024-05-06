@@ -11,7 +11,7 @@ const MainContainer = ()=>{
     const mainmovie = MovieList[0];
     const {original_title,overview,id} = mainmovie;
 
-    return <div>
+    return <div className="pt-[30%] md:pt-0 bg-black">
         <MovieTitle title={original_title} overview={overview}/>
         <BackgroundMovie movieId = {id}/>
         

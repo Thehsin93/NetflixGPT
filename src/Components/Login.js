@@ -75,10 +75,10 @@ return <div>
     <Header></Header>
   
     <div className="absolute">
-    <img src={bgimage}
+    <img src={bgimage} className="h-screen object-cover w-screen"
         alt = "bgimage"></img>
         </div>
-    <form onSubmit={(e)=>e.preventDefault()} className="bg-black p-12 absolute my-36 w-4/12 mx-auto right-0 left-0 bg-opacity-80 rounded-sm">
+    <form onSubmit={(e)=>e.preventDefault()} className="bg-black p-12 absolute my-36 w-11/12 md:w-4/12 mx-auto right-0 left-0 bg-opacity-80 rounded-sm">
         <h1 className="font-bold text-lg text-white my-2">{isLogin===true?"Sign In":"Sign Up"}</h1>
         {!isLogin && <input type="text" ref={fname} placeholder="Full Name" className="p-4 my-4 w-full rounded-sm bg-black border border-gray-600 text-white"></input>}
 
