@@ -8,7 +8,8 @@ import useTopRated from "../Hooks/useTopRated";
 import GPTSearch from "./GPTSearch";
 import { useSelector } from "react-redux";
 const Browse = ()=>{
-
+    
+   
    const showgptsearch = useSelector(store=>store.gpt.showgptsearch);
   
     useNowPlayingMovies();

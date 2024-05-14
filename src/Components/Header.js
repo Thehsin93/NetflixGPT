@@ -17,6 +17,9 @@ const Header = ()=>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+   
+   
+
   const setLogout=()=>{
     changelogout(true);
   }
@@ -27,6 +30,7 @@ const Header = ()=>{
 
     useEffect(()=>{
         const unsubscribe =onAuthStateChanged(auth, (user) => {
+       
             if (user) {
              
               const {uid,email,displayName,photoURL} = user;
@@ -59,25 +63,27 @@ const Header = ()=>{
     const setLang=(e)=>{
       dispatch(setlanguage(e.target.value));
     }
-return <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex flex-col md:flex-row justify-between">
- <img className="w-44 h-20 mx-auto md:mx-0" src={netflixlogo}
+
+    
+return (<div className="absolute w-screen px-8 py-1 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between">
+ <img className="w-44 mx-auto md:mx-0" src={netflixlogo}
 alt="logo"></img>
-{user && <div className="py-2 mx-[10%] md:mx-0 "  >
-   <div className="flex p-2 mx-auto">
-    {gptshow&&<select className="p-1 md:p-2 my-1 md:my-2 mx-4 bg-gray-600 rounded-lg text-white" onChange={setLang}>
-     {languages.map((lng)=><option key = {lng.identifier} value={lng.identifier}>{lng.name}</option>)
+{user && (<div className="py-2 flex justify-end"  >
+
+    {gptshow&&(<select className="py-2 px-4 mx-4 my-4 bg-red-600 text-white rounded-lg" onChange={setLang}>
+     {languages.map((lng)=>(<option key = {lng.identifier} value={lng.identifier}>{lng.name}</option>))
 
      }
-     </select>}
+     </select>)}
 
  
-    <button className="px-4 py-1 mr-4 my-2 bg-purple-800 text-white rounded-lg" onClick={Handlegptclick}>{gptshow?"Home Page" :"GPT Search"}</button>
+    <button className="py-2 px-4 mx-4 my-4 bg-red-600 text-white rounded-lg" onClick={Handlegptclick}>{gptshow?"Home Page" :"GPT Search"}</button>
+    <div className="flex flex-col px-4">
+         <img alt="userlogo" className="hidden md:block w-12 h-12" src={user?.photoURL} onMouseEnter={setLogout} ></img>
     
-         <img alt="userlogo" className="w-12 h-12 my-2" src={user?.photoURL} onMouseEnter={setLogout} ></img>
-       </div>
-        {logoutdiv && <button className="text-white mr-[5%] md:ml-28 my-1  text-lg rounded-lg border border-black bg-gray-600" onClick={HandleSignout} onMouseOut={hideLogout}>SignOut</button>}
-    
-</div>}
-</div>
+        {<button className="font-bold text-white" onClick={HandleSignout} onMouseOut={hideLogout}>SignOut</button>}
+    </div>
+</div>)}
+</div>);
 };
 export default Header

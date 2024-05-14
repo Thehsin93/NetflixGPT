@@ -72,7 +72,7 @@ const validateform = () =>{
 
 return <div>
     
-    <Header></Header>
+    <Header/>
   
     <div className="absolute">
     <img src={bgimage} className="h-screen object-cover w-screen"
