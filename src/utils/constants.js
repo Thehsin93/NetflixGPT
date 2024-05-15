@@ -1,4 +1,4 @@
-import { decryptkey, encryptKey } from "./Encryption";
+
 export const bgimage = "https://assets.nflxext.com/ffe/siteui/vlv3/4d7bb476-6d8b-4c49-a8c3-7739fddd135c/33ba1ccc-ea22-44e1-9708-8119518a6e8b/AE-en-20240429-popsignuptwoweeks-perspective_alpha_website_small.jpg";
 
 export const photo = "https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png";
@@ -16,4 +16,3 @@ export const API_options = {
 
   export const languages = [{identifier:"en",name:"english"},{identifier:"hindi",name:"Hindi"},{identifier:"spanish",name:"Spanish"}];
   
-  export const gptkey = decryptkey(process.env.REACT_APP_ENCRYPTEDKEY);

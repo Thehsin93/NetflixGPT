@@ -1,10 +1,11 @@
 import { useRef } from "react"
 import lang from "../utils/languageConstants"
 import { useDispatch, useSelector} from "react-redux"
-import openai from "../utils/openai"
+import OpenAI from 'openai';
 import { API_options } from "../utils/constants"
 import {addMovieresult} from "../utils/gptSlice"
 const GPTSearchBar = ()=>{
+    const gptKey = useRef();
     const searchtext = useRef(null);
     const dispatch = useDispatch();
     const SearchMovie = async(movie)=>{
@@ -13,7 +14,11 @@ const GPTSearchBar = ()=>{
         return data.results;
     }
     const handlegptsearch=async()=>{
+        const openai = new OpenAI({
    
+            apiKey:gptKey.current.value, 
+            dangerouslyAllowBrowser:true// This is the default and can be omitted
+          });
         const gptQuery =
     "Act as a Movie Recommendation system and suggest some movies for the query : " +
     searchtext.current.value +
@@ -31,11 +36,14 @@ const GPTSearchBar = ()=>{
     
     const langkey = useSelector(store=>store.config.lang);
     return <div className="pt-[35%] md:pt-[10%] flex justify-center">
-        <form className="w-full md:w-1/2 bg-black grid grid-cols-12" onSubmit={(e)=>e.preventDefault()}>
-            <input type="text" ref={searchtext} className="p-4 m-4 col-span-9" placeholder={lang[langkey].gptSearchPlaceholder}>
+        <form className="w-full md:w-3/4 bg-black grid grid-cols-12" onSubmit={(e)=>e.preventDefault()}>
+        <input type="text" ref={gptKey} className="p-4 m-4 col-span-5" placeholder={lang[langkey].apiPlaceholder}>
+
+        </input>
+            <input type="text" ref={searchtext} className="p-4 m-4 col-span-5" placeholder={lang[langkey].gptSearchPlaceholder}>
 
             </input>
-            <button className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg" onClick={handlegptsearch}>{lang[langkey].search}</button>
+            <button className="col-span-2 m-4 py-2 px-4 bg-red-700 text-white rounded-lg" onClick={handlegptsearch}>{lang[langkey].search}</button>
         </form>
     </div>
 }
