@@ -72,7 +72,7 @@ alt="logo"></img>
 {user && (<div className="py-2 flex justify-end"  >
 
     {gptshow&&(<select className="py-2 px-4 mx-4 my-4 bg-red-600 text-white rounded-lg" onChange={setLang}>
-     {languages.map((lng)=>(<option key = {lng.identifier} value={lng.identifier}>{lng.name}</option>))
+     {languages.map((lng)=>(<option className="bg-gray-400 text-white hover:bg-black" key = {lng.identifier} value={lng.identifier}>{lng.name}</option>))
 
      }
      </select>)}

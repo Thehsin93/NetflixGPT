@@ -14,5 +14,5 @@ export const API_options = {
 
   export const tmdb_url = "https://image.tmdb.org/t/p/w500/";
 
-  export const languages = [{identifier:"en",name:"english"},{identifier:"hindi",name:"Hindi"},{identifier:"spanish",name:"Spanish"}];
+  export const languages = [{identifier:"en",name:"English"},{identifier:"hindi",name:"Hindi"},{identifier:"spanish",name:"Spanish"}];
   
